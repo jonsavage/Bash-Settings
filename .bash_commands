@@ -1,0 +1,15 @@
+#Prints out the UDID's of any connected iDevices.
+gudid() {
+	echo "iPhones -------------------"
+   	system_profiler SPUSBDataType | sed -n '/iPhone/,/Serial/p' | grep "Serial Number:" | awk -F ": " '{print $2}'
+    	echo "iPads -------------------"
+        system_profiler SPUSBDataType | sed -n '/iPad/,/Serial/p' | grep "Serial Number:" | awk -F ": " '{print $2}'
+    	echo "iPhones -------------------"
+        system_profiler SPUSBDataType | sed -n '/iPod/,/Serial/p' | grep "Serial Number:" | awk -F ": " '{print $2}'
+}
+
+#Says "I'm in Love with the Coco" Every time you 'git push'
+git_push() {
+	say "[[rate 300]] I'm in [[rate 200]] love [[rate 300]] with the [[rate 200]] [[inpt PHON]] kOWkOW" &> /dev/null
+	git push
+}
