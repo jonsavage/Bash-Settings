@@ -13,3 +13,8 @@ git_push() {
 	say "[[rate 300]] I'm in [[rate 200]] love [[rate 300]] with the [[rate 200]] [[inpt PHON]] kOWkOW" &> /dev/null
 	git push
 }
+
+#Changes every Info.plist file owner to you, make sure you change YOUR_IDENTIFIER to your Apple Developer Identifier.
+xown() {
+	find . -type f -name 'Info.plist' -exec sed -i '' "s/<string>com.*.\$(PRODUCT_NAME:rfc1034identifier)main<\/string>/<string>com.YOUR_IDENTIFIER.\$(PRODUCT_NAME:rfc1034identifier)main<\/string>/g" {} +
+}
